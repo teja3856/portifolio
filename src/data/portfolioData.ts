@@ -234,14 +234,14 @@ export const TIMELINE: TimelineItem[] = [
   },
   {
     id: 'exp-2',
-    period: 'Ongoing',
-    role: 'VOLUNTEER',
-    company: 'GITAM University',
+    period: '2026 – Present',
+    role: 'CONTENT LEAD',
+    company: 'GUSAC Club, GITAM University',
     location: 'Bangalore, Karnataka',
-    description: 'Actively participated in community outreach and volunteer programs to promote engagement and social impact initiatives.',
+    description: 'Leading content creation, technical writing, digital outreach, and event storytelling for the GUSAC (GITAM University Science and Activity Center) club.',
     achievements: [
-      'Led community outreach initiatives and volunteer team engagement',
-      'Promoted social impact programs and stakeholder collaboration'
+      'Spearheading content strategy, technical documentation, and creative communication for club initiatives',
+      'Collaborating with student teams to maximize club outreach, event participation, and engagement'
     ],
     type: 'work'
   },
