@@ -161,24 +161,6 @@ export const PROJECTS: Project[] = [
       'AI-assisted decision-making dashboard for railway control room operations',
       'Real-time interactive monitoring and section conflict detection algorithms'
     ]
-  },
-  {
-    id: 'personal-portfolio-react',
-    title: 'Modern Developer Portfolio & Showcase',
-    category: 'Full-Stack Web App',
-    description: 'Modern, interactive personal developer portfolio website showcasing full-stack applications, AI projects, certifications, and experience.',
-    longDescription: 'Engineered a modern, responsive personal portfolio with React 19, TypeScript, and Vite. Designed with glassmorphism aesthetics, dynamic project filtering, interactive modal showcases, certification viewers, and automated deployment on Firebase Hosting.',
-    tags: ['React', 'TypeScript', 'Vite', 'CSS3', 'Firebase Hosting', 'UI/UX'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
-    liveUrl: 'https://tejasantosh88-dev.web.app/',
-    githubUrl: 'https://github.com/teja3856/portifolio',
-    featured: true,
-    metrics: 'Live Web App & Open Source',
-    highlights: [
-      'Built with React 19, TypeScript, and high-performance Vite architecture',
-      'Designed responsive glassmorphism UI with real-time project search and filtering',
-      'Deployed on Firebase Hosting with high availability and fast global CDN'
-    ]
   }
 ];
 
