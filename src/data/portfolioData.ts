@@ -153,7 +153,7 @@ export const PROJECTS: Project[] = [
     tags: ['AI / Machine Learning', 'React', 'TypeScript', 'Smart India Hackathon', 'Firebase', 'Automation'],
     image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=80',
     liveUrl: 'https://ai-resume-68ff7.web.app/',
-    githubUrl: 'https://github.com/teja3856',
+    githubUrl: 'https://github.com/teja3856/sih26027-railway-planner',
     featured: true,
     metrics: 'Smart India Hackathon (SIH26027)',
     highlights: [
