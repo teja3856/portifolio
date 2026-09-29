@@ -25,7 +25,7 @@ export const Projects: React.FC = () => {
         <span className="section-badge">Featured Work</span>
         <h2 className="section-title">Projects & Applications</h2>
         <p className="section-subtitle">
-          Explore my real-world applications including ResumeCraft AI and Punjabi Shiksha Setu.
+          Explore my real-world applications, AI platforms, and hackathon solutions.
         </p>
       </div>
 

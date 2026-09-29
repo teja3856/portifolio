@@ -143,6 +143,24 @@ export const PROJECTS: Project[] = [
       'Designed responsive UI/UX for seamless learning across mobile and desktop',
       'Integrated real-time progress indicators and intuitive feedback'
     ]
+  },
+  {
+    id: 'railway-ai-block-planning',
+    title: 'AI Automatic Block Planning - Indian Railways',
+    category: 'AI / Machine Learning',
+    description: 'Smart India Hackathon project delivering an AI-driven control room platform for automated train block planning and traffic optimization.',
+    longDescription: 'Developed for the Smart India Hackathon (SIH26027), this AI-powered control room platform automates block planning, optimizes railway traffic scheduling, and minimizes section congestion for Indian Railways.',
+    tags: ['AI / Machine Learning', 'React', 'TypeScript', 'Smart India Hackathon', 'Firebase', 'Automation'],
+    image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=80',
+    liveUrl: 'https://ai-resume-68ff7.web.app/',
+    githubUrl: 'https://github.com/teja3856',
+    featured: true,
+    metrics: 'Smart India Hackathon (SIH26027)',
+    highlights: [
+      'Automated train block allocation and scheduling to reduce line congestion',
+      'AI-assisted decision-making dashboard for railway control room operations',
+      'Real-time interactive monitoring and section conflict detection algorithms'
+    ]
   }
 ];
 
