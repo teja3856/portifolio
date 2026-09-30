@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Mail, MapPin, Copy, Check, Send, Download, FileText, Phone, MessageCircle, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Copy, Check, Download, FileText, Phone, MessageCircle } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './Icons';
 
 export const Contact: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const handleCopyEmail = () => {
@@ -28,68 +25,27 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopiedPhone(false), 2500);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const cleanPhone = PERSONAL_INFO.phone.replace(/[^0-9]/g, '');
+
+  const handleOpenWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    const parts = [];
+    if (formData.name) parts.push(`*Name:* ${formData.name}`);
+    if (formData.email) parts.push(`*Email:* ${formData.email}`);
+    if (formData.subject) parts.push(`*Subject:* ${formData.subject}`);
+    if (formData.message) parts.push(`\n*Message:*\n${formData.message}`);
 
-    setIsSubmitting(true);
-    setErrorMessage('');
+    const messageText =
+      parts.length > 0
+        ? parts.join('\n')
+        : 'Hi Teja, I came across your portfolio and would like to connect!';
 
-    try {
-      // Send directly to personal email via FormSubmit AJAX service
-      const response = await fetch(`https://formsubmit.co/ajax/${PERSONAL_INFO.email}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          _replyto: formData.email,
-          _subject: formData.subject ? `[Portfolio Contact] ${formData.subject}` : `New Portfolio Message from ${formData.name}`,
-          message: formData.message,
-          _template: 'table',
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok && (result.success === 'true' || result.success === true || response.status === 200)) {
-        setFormSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setFormSubmitted(false), 7000);
-      } else {
-        throw new Error(result.message || 'Error delivering message');
-      }
-    } catch (err) {
-      console.warn('Direct API submission error, opening fallback email client:', err);
-      // Fallback: open mail client with prefilled info
-      window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(
-        formData.subject || `Portfolio Inquiry from ${formData.name}`
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      setFormSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setFormSubmitted(false), 7000);
-    } finally {
-      setIsSubmitting(false);
-    }
+    const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(messageText)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const cleanPhone = PERSONAL_INFO.phone.replace(/[^0-9]/g, '');
-  const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(
-    formData.subject || 'Portfolio Inquiry / Project Collaboration'
-  )}&body=${encodeURIComponent(
-    formData.message
-      ? `Name: ${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not provided'}\n\n${formData.message}`
-      : 'Hello Teja, I would like to connect and discuss a project with you.'
-  )}`;
-
-  const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
-    formData.message
-      ? `Hi Teja, my name is ${formData.name || 'there'}. ${formData.message}`
-      : `Hi Teja, I came across your portfolio and would like to connect!`
+  const directWhatsAppUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+    'Hi Teja, I came across your portfolio and would like to connect!'
   )}`;
 
   return (
@@ -99,7 +55,7 @@ export const Contact: React.FC = () => {
         <span className="section-badge">Get In Touch</span>
         <h2 className="section-title">Let's Build Something Great Together</h2>
         <p className="section-subtitle">
-          Have an exciting project, internship opportunity, or question? Send a direct message to my email or phone.
+          Have an exciting project, internship opportunity, or question? Connect with me directly on WhatsApp.
         </p>
       </div>
 
@@ -163,6 +119,67 @@ export const Contact: React.FC = () => {
               </a>
             </div>
 
+            {/* Phone & WhatsApp Card */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '16px',
+                borderRadius: '12px',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-subtle)',
+                marginBottom: '16px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: 'rgba(16, 185, 129, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#10b981',
+                  }}
+                >
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Phone & WhatsApp</div>
+                  <a
+                    href={`tel:${cleanPhone}`}
+                    style={{ fontSize: '0.95rem', fontWeight: 600, color: 'inherit', textDecoration: 'none' }}
+                  >
+                    {PERSONAL_INFO.phone}
+                  </a>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '6px' }}>
+                <a
+                  href={directWhatsAppUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-icon"
+                  style={{ width: '36px', height: '36px', color: '#10b981' }}
+                  title="Chat on WhatsApp"
+                >
+                  <MessageCircle size={18} />
+                </a>
+                <button
+                  onClick={handleCopyPhone}
+                  className="btn-icon"
+                  style={{ width: '36px', height: '36px' }}
+                  title="Copy Phone"
+                >
+                  {copiedPhone ? <Check size={18} color="#10b981" /> : <Copy size={18} />}
+                </button>
+              </div>
+            </div>
+
             {/* Email Card */}
             <div
               style={{
@@ -210,67 +227,6 @@ export const Contact: React.FC = () => {
               >
                 {copiedEmail ? <Check size={18} color="#10b981" /> : <Copy size={18} />}
               </button>
-            </div>
-
-            {/* Phone & WhatsApp Card */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '16px',
-                borderRadius: '12px',
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border-subtle)',
-                marginBottom: '16px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '10px',
-                    background: 'rgba(16, 185, 129, 0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#10b981',
-                  }}
-                >
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Phone & WhatsApp</div>
-                  <a
-                    href={`tel:${cleanPhone}`}
-                    style={{ fontSize: '0.95rem', fontWeight: 600, color: 'inherit', textDecoration: 'none' }}
-                  >
-                    {PERSONAL_INFO.phone}
-                  </a>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '6px' }}>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-icon"
-                  style={{ width: '36px', height: '36px', color: '#10b981' }}
-                  title="Chat on WhatsApp"
-                >
-                  <MessageCircle size={18} />
-                </a>
-                <button
-                  onClick={handleCopyPhone}
-                  className="btn-icon"
-                  style={{ width: '36px', height: '36px' }}
-                  title="Copy Phone"
-                >
-                  {copiedPhone ? <Check size={18} color="#10b981" /> : <Copy size={18} />}
-                </button>
-              </div>
             </div>
 
             {/* Location Card */}
@@ -322,114 +278,24 @@ export const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Interactive Contact Form */}
+        {/* Interactive WhatsApp Contact Form */}
         <div className="glass-panel" style={{ padding: '32px' }}>
-          {formSubmitted ? (
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '40px 20px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '16px',
-              }}
-            >
-              <div
-                style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  color: '#10b981',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Check size={36} />
-              </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Message Sent to My Inbox!</h3>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '420px', lineHeight: 1.6 }}>
-                Thank you for reaching out! Your message has been forwarded to <strong>{PERSONAL_INFO.email}</strong>. I will get back to you shortly.
-              </p>
+          <form onSubmit={handleOpenWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Send a Direct Message</h3>
+              <span style={{ fontSize: '0.8rem', color: '#25D366', fontWeight: 600 }}>● Instant WhatsApp Connect</span>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Send a Direct Message</h3>
-                <span style={{ fontSize: '0.8rem', color: '#10b981', fontWeight: 600 }}>● Instant Email Delivery</span>
-              </div>
 
-              {errorMessage && (
-                <div
-                  style={{
-                    padding: '10px 14px',
-                    borderRadius: '8px',
-                    background: 'rgba(239, 68, 68, 0.1)',
-                    color: '#ef4444',
-                    fontSize: '0.85rem',
-                  }}
-                >
-                  {errorMessage}
-                </div>
-              )}
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '12px 16px',
-                      borderRadius: '10px',
-                      background: 'var(--bg-secondary)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      outline: 'none',
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
-                    Your Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '12px 16px',
-                      borderRadius: '10px',
-                      background: 'var(--bg-secondary)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      outline: 'none',
-                    }}
-                  />
-                </div>
-              </div>
-
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
-                  Subject
+                  Your Name
                 </label>
                 <input
                   type="text"
-                  placeholder="Project Collaboration / Inquiries"
-                  value={formData.subject}
-                  onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '12px 16px',
@@ -444,14 +310,13 @@ export const Contact: React.FC = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
-                  Message *
+                  Your Email
                 </label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Hello, I'd like to discuss a project..."
-                  value={formData.message}
-                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                <input
+                  type="email"
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '12px 16px',
@@ -460,81 +325,82 @@ export const Contact: React.FC = () => {
                     border: '1px solid var(--border-subtle)',
                     color: 'var(--text-primary)',
                     outline: 'none',
-                    resize: 'vertical',
                   }}
                 />
               </div>
+            </div>
 
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn btn-primary"
-                  style={{ flex: '1 1 180px', opacity: isSubmitting ? 0.7 : 1 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      Sending Message... <Loader2 size={18} className="animate-spin" />
-                    </>
-                  ) : (
-                    <>
-                      Send to Email <Send size={18} />
-                    </>
-                  )}
-                </button>
+            <div>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                Subject
+              </label>
+              <input
+                type="text"
+                placeholder="Project Collaboration / Inquiries"
+                value={formData.subject}
+                onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-subtle)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                }}
+              />
+            </div>
 
-                <a
-                  href={mailtoUrl}
-                  className="btn"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    padding: '12px 18px',
-                    borderRadius: '10px',
-                    background: 'var(--bg-secondary)',
-                    color: 'var(--text-primary)',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    border: '1px solid var(--border-subtle)',
-                    fontSize: '0.9rem',
-                    flex: '1 1 150px',
-                  }}
-                  title="Open in Mail App (mailto link)"
-                >
-                  <Mail size={16} /> Open Mail Client
-                </a>
+            <div>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                Message *
+              </label>
+              <textarea
+                required
+                rows={4}
+                placeholder="Hello, I'd like to discuss a project..."
+                value={formData.message}
+                onChange={e => setFormData({ ...formData, message: e.target.value })}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-subtle)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                  resize: 'vertical',
+                }}
+              />
+            </div>
 
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    padding: '12px 18px',
-                    borderRadius: '10px',
-                    background: '#25D366',
-                    color: '#ffffff',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    border: 'none',
-                    fontSize: '0.9rem',
-                    flex: '1 1 150px',
-                  }}
-                  title="Send via WhatsApp"
-                >
-                  <MessageCircle size={18} /> WhatsApp
-                </a>
-              </div>
-            </form>
-          )}
+            <button
+              type="submit"
+              className="btn"
+              style={{
+                width: '100%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                padding: '14px 24px',
+                borderRadius: '12px',
+                background: '#25D366',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: '1rem',
+                border: 'none',
+                boxShadow: '0 4px 14px rgba(37, 211, 102, 0.35)',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              }}
+            >
+              <MessageCircle size={20} /> Open & Send on WhatsApp
+            </button>
+          </form>
         </div>
       </div>
     </section>
   );
 };
+
