@@ -56,7 +56,7 @@ export const Navbar: React.FC = () => {
       <div
         className="glass-panel"
         style={{
-          maxWidth: '1200px',
+          maxWidth: '1320px',
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',

@@ -148,9 +148,9 @@ a {
 
 /* Section Wrapper */
 .section-container {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 100px 24px;
+  padding: 100px 28px;
 }
 
 .section-header {
@@ -162,13 +162,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 8px 18px;
   background: rgba(79, 70, 229, 0.08);
   border: 1px solid rgba(79, 70, 229, 0.2);
   border-radius: var(--radius-full);
   color: var(--accent-primary);
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 16px;
   text-transform: uppercase;
@@ -176,15 +176,16 @@ a {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
-  max-width: 600px;
+  font-size: 1.15rem;
+  max-width: 680px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 /* Custom UI Components & Buttons */
