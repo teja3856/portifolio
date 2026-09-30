@@ -78,6 +78,14 @@ export const Contact: React.FC = () => {
   };
 
   const cleanPhone = PERSONAL_INFO.phone.replace(/[^0-9]/g, '');
+  const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(
+    formData.subject || 'Portfolio Inquiry / Project Collaboration'
+  )}&body=${encodeURIComponent(
+    formData.message
+      ? `Name: ${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not provided'}\n\n${formData.message}`
+      : 'Hello Teja, I would like to connect and discuss a project with you.'
+  )}`;
+
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
     formData.message
       ? `Hi Teja, my name is ${formData.name || 'there'}. ${formData.message}`
@@ -462,7 +470,7 @@ export const Contact: React.FC = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className="btn btn-primary"
-                  style={{ flex: '1 1 200px', opacity: isSubmitting ? 0.7 : 1 }}
+                  style={{ flex: '1 1 180px', opacity: isSubmitting ? 0.7 : 1 }}
                 >
                   {isSubmitting ? (
                     <>
@@ -476,6 +484,29 @@ export const Contact: React.FC = () => {
                 </button>
 
                 <a
+                  href={mailtoUrl}
+                  className="btn"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    padding: '12px 18px',
+                    borderRadius: '10px',
+                    background: 'var(--bg-secondary)',
+                    color: 'var(--text-primary)',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    border: '1px solid var(--border-subtle)',
+                    fontSize: '0.9rem',
+                    flex: '1 1 150px',
+                  }}
+                  title="Open in Mail App (mailto link)"
+                >
+                  <Mail size={16} /> Open Mail Client
+                </a>
+
+                <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
@@ -485,18 +516,19 @@ export const Contact: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    padding: '12px 20px',
+                    padding: '12px 18px',
                     borderRadius: '10px',
                     background: '#25D366',
                     color: '#ffffff',
                     fontWeight: 600,
                     textDecoration: 'none',
                     border: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: '0.9rem',
+                    flex: '1 1 150px',
                   }}
                   title="Send via WhatsApp"
                 >
-                  <MessageCircle size={18} /> Chat on WhatsApp
+                  <MessageCircle size={18} /> WhatsApp
                 </a>
               </div>
             </form>
