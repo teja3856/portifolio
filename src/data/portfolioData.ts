@@ -180,6 +180,18 @@ export interface Certificate {
 
 export const CERTIFICATES: Certificate[] = [
   {
+    id: 'cert-sih-2026',
+    title: 'Smart India Hackathon 2026 - Certificate of Participation',
+    issuer: 'GITAM Bengaluru & MoE Innovation Cell (Govt of India / AICTE)',
+    category: 'Hackathons & Innovation',
+    issueDate: 'September 9, 2026',
+    description: 'Awarded to Teja Santosh for participating in the Internal Smart India Hackathon 2026 held at GITAM (Deemed to be) University Bengaluru on 8th and 9th September 2026 under the Ministry of Education (MoE) Innovation Cell & Venture Development Center.',
+    image: '/certificates/smart_india_hackathon_2026.png',
+    pdfUrl: '/certificates/smart_india_hackathon_2026.pdf',
+    badge: 'National Hackathon 2026',
+    skills: ['AI Block Planning', 'Railway Automation', 'Hackathon Pitching', 'Innovation', 'System Design']
+  },
+  {
     id: 'cert-sih-2025',
     title: 'Smart India Hackathon 2025 - Certificate of Appreciation',
     issuer: 'GITAM Bengaluru & MoE Innovation Cell (Govt of India / AICTE)',
