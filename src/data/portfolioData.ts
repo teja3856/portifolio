@@ -233,14 +233,15 @@ export const CERTIFICATES: Certificate[] = [
 export const TIMELINE: TimelineItem[] = [
   {
     id: 'exp-1',
-    period: 'May 2024 – Jul 2024',
+    period: 'Feb 2026 – May 2026',
     role: 'AI/ML INTERN',
     company: 'Aenexz Tech Private Limited',
     location: 'India',
     description: 'Built AI/ML models as part of real-world projects and contributed to model development and performance improvement.',
     achievements: [
       'Built AI/ML predictive and classification models for production workflows',
-      'Contributed to machine learning model evaluation and performance optimization'
+      'Contributed to machine learning model evaluation and performance optimization',
+      'Completed an AI/ML program and received Certificate of Completion'
     ],
     type: 'work'
   },
