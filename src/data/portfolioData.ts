@@ -21,9 +21,7 @@ export interface Project {
 
 export interface SkillItem {
   name: string;
-  focus: string;
-  topics: string[];
-  isCore?: boolean;
+  tags: string[];
 }
 
 export interface SkillCategory {
@@ -71,32 +69,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       {
         name: 'Python',
-        focus: 'Data Analysis, ML, Automation',
-        topics: ['Data Analysis', 'NumPy & Pandas', 'Scripting', 'Automation'],
-        isCore: true
-      },
-      {
-        name: 'Machine Learning',
-        focus: 'Supervised Learning, Model Evaluation',
-        topics: ['Classification', 'Regression', 'Feature Engineering', 'Scikit-Learn'],
-        isCore: true
+        tags: ['Data Analysis', 'NumPy', 'Pandas', 'Machine Learning', 'Automation']
       },
       {
         name: 'SQL & Databases',
-        focus: 'Queries, Joins, Data Management',
-        topics: ['Relational Queries', 'Joins & Aggregations', 'Schema Design', 'Data Filtering'],
-        isCore: true
+        tags: ['SQL Queries', 'Joins', 'Data Filtering', 'Relational Databases']
+      },
+      {
+        name: 'Machine Learning',
+        tags: ['Supervised Learning', 'Classification', 'Regression', 'Model Evaluation', 'Scikit-Learn']
+      },
+      {
+        name: 'Problem Solving & Logic',
+        tags: ['Data Structures', 'Algorithms', 'Debugging', 'Logical Thinking']
       },
       {
         name: 'Analytical Thinking',
-        focus: 'Data Interpretation, Problem Analysis',
-        topics: ['Pattern Recognition', 'Exploratory Analysis', 'Insight Extraction', 'Structured Thinking'],
-        isCore: true
-      },
-      {
-        name: 'Problem Solving',
-        focus: 'Algorithms, Logic, Debugging',
-        topics: ['Data Structures', 'Algorithmic Logic', 'Debugging', 'Code Optimization']
+        tags: ['Data Interpretation', 'Pattern Recognition', 'Problem Analysis', 'Insights']
       }
     ]
   },
@@ -105,28 +94,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       {
         name: 'Project Coordination',
-        focus: 'Planning, Execution, Team Alignment',
-        topics: ['Task Prioritization', 'Milestone Tracking', 'Cross-Team Coordination']
+        tags: ['Planning', 'Execution', 'Team Alignment', 'Task Prioritization', 'Milestone Tracking']
       },
       {
         name: 'Community Outreach',
-        focus: 'Student Engagement, Event Organizing',
-        topics: ['Event Management', 'Public Outreach', 'Student Engagement']
+        tags: ['Student Engagement', 'Event Organizing', 'Public Outreach', 'Campaigns']
       },
       {
         name: 'Technical Writing',
-        focus: 'Documentation, Reports, Content Strategy',
-        topics: ['Documentation', 'Content Creation', 'Project Reports']
+        tags: ['Documentation', 'Project Reports', 'Content Strategy', 'Technical Communication']
       },
       {
         name: 'Volunteer Engagement',
-        focus: 'Team Support, Activity Coordination',
-        topics: ['Student Mentorship', 'Workshop Support', 'Activity Planning']
+        tags: ['Team Support', 'Activity Coordination', 'Peer Mentorship', 'Workshops']
       },
       {
         name: 'Adaptability & Learning',
-        focus: 'Rapid Prototyping, Continuous Growth',
-        topics: ['Fast Prototyping', 'New Tool Adoption', 'Continuous Learning']
+        tags: ['Rapid Prototyping', 'Continuous Growth', 'Tool Adoption', 'Fast Learning']
       }
     ]
   },
@@ -135,23 +119,19 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       {
         name: 'Team Collaboration',
-        focus: 'Cross-Functional Teamwork, Hackathons',
-        topics: ['Hackathon Teams', 'Peer Programming', 'Active Feedback']
+        tags: ['Cross-Functional Teamwork', 'Hackathon Teams', 'Peer Programming', 'Active Feedback']
       },
       {
         name: 'Communication Skills',
-        focus: 'Articulating Ideas, Technical Discussions',
-        topics: ['Idea Presentation', 'Technical Discussions', 'Active Listening']
+        tags: ['Articulating Ideas', 'Technical Discussions', 'Presentations', 'Active Listening']
       },
       {
         name: 'Stakeholder Engagement',
-        focus: 'Campus Initiatives, Student Community',
-        topics: ['Club Coordination', 'Student Relations', 'Community Building']
+        tags: ['Campus Initiatives', 'Student Relations', 'Community Building', 'Coordination']
       },
       {
         name: 'Leadership & Initiative',
-        focus: 'Club Activities, Event Management',
-        topics: ['GUSAC Content Lead', 'Proactive Initiatives', 'Team Motivation']
+        tags: ['Club Activities', 'Event Management', 'GUSAC Content Lead', 'Team Motivation']
       }
     ]
   }

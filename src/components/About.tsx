@@ -78,7 +78,7 @@ export const About: React.FC = () => {
       {/* Interactive Skills Matrix */}
       <div id="skills" className="glass-panel" style={{ padding: '36px 28px' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '24px', textAlign: 'center' }}>
-          Core Competencies & Skills
+          Interactive Tech Stack Matrix
         </h3>
 
         {/* Category Tabs */}
@@ -111,7 +111,7 @@ export const About: React.FC = () => {
           ))}
         </div>
 
-        {/* Skill Cards Grid (Percentages removed, focus & sub-areas displayed) */}
+        {/* Skill Cards Grid (Clean tags/chips, no percentages or progress bars) */}
         <div
           style={{
             display: 'grid',
@@ -123,80 +123,51 @@ export const About: React.FC = () => {
             <div
               key={skill.name}
               style={{
-                background: skill.isCore ? 'rgba(99, 102, 241, 0.03)' : 'var(--bg-secondary)',
-                padding: '20px',
+                background: 'var(--bg-secondary)',
+                padding: '22px 20px',
                 borderRadius: '14px',
-                border: skill.isCore ? '1px solid rgba(99, 102, 241, 0.35)' : '1px solid var(--border-subtle)',
-                boxShadow: skill.isCore ? '0 4px 16px rgba(99, 102, 241, 0.08)' : 'none',
+                border: '1px solid var(--border-subtle)',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '12px',
-                transition: 'transform 0.2s ease, border-color 0.2s ease',
+                gap: '14px',
+                transition: 'transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(99, 102, 241, 0.12)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              <div>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '8px',
-                    marginBottom: '6px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckCircle2 size={18} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
-                    <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
-                      {skill.name}
-                    </span>
-                  </div>
-                  {skill.isCore && (
-                    <span
-                      style={{
-                        fontSize: '0.7rem',
-                        padding: '2px 8px',
-                        borderRadius: '9999px',
-                        background: 'rgba(99, 102, 241, 0.12)',
-                        color: 'var(--accent-primary)',
-                        fontWeight: 700,
-                        letterSpacing: '0.02em',
-                      }}
-                    >
-                      Core Focus
-                    </span>
-                  )}
-                </div>
-
-                <div
-                  style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--accent-primary)',
-                    fontWeight: 600,
-                    marginBottom: '10px',
-                    paddingLeft: '26px',
-                  }}
-                >
-                  {skill.focus}
-                </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <CheckCircle2 size={20} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
+                <h4 style={{ margin: 0, fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)' }}>
+                  {skill.name}
+                </h4>
               </div>
 
-              {/* Skill Sub-topics / Area Tags */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', paddingLeft: '26px' }}>
-                {skill.topics.map(topic => (
+              {/* Skill Tags/Chips */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {skill.tags.map(tag => (
                   <span
-                    key={topic}
+                    key={tag}
                     style={{
-                      padding: '3px 9px',
-                      borderRadius: '6px',
+                      padding: '5px 12px',
+                      borderRadius: '9999px',
                       background: 'var(--bg-tertiary)',
-                      fontSize: '0.75rem',
-                      fontFamily: 'var(--font-mono)',
-                      color: 'var(--text-muted)',
+                      fontSize: '0.8rem',
+                      fontWeight: 500,
+                      color: 'var(--text-secondary)',
                       border: '1px solid var(--border-subtle)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
                     }}
                   >
-                    {topic}
+                    {tag}
                   </span>
                 ))}
               </div>
