@@ -53,23 +53,23 @@ export const Contact: React.FC = () => {
       {/* Section Header */}
       <div className="section-header">
         <span className="section-badge">Get In Touch</span>
-        <h2 className="section-title">Let's Build Something Great Together</h2>
+        <h2 className="section-title">Let's Connect</h2>
         <p className="section-subtitle">
-          Have an exciting project, internship opportunity, or question? Connect with me directly on WhatsApp.
+          Have a project, internship opportunity, or collaboration idea? I'd be happy to connect.
         </p>
       </div>
 
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '40px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '32px',
           alignItems: 'start',
         }}
       >
         {/* Contact Information & Quick Actions */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div className="glass-panel" style={{ padding: '32px' }}>
+          <div className="glass-panel" style={{ padding: '28px' }}>
             <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '20px' }}>Contact Information</h3>
 
             {/* Resume Download Card */}
@@ -96,6 +96,7 @@ export const Contact: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#ffffff',
+                    flexShrink: 0,
                   }}
                 >
                   <FileText size={20} />
@@ -143,6 +144,7 @@ export const Contact: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#10b981',
+                    flexShrink: 0,
                   }}
                 >
                   <Phone size={20} />
@@ -204,6 +206,7 @@ export const Contact: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: 'var(--accent-primary)',
+                    flexShrink: 0,
                   }}
                 >
                   <Mail size={20} />
@@ -252,6 +255,7 @@ export const Contact: React.FC = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#d946ef',
+                  flexShrink: 0,
                 }}
               >
                 <MapPin size={20} />
@@ -279,21 +283,21 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Interactive WhatsApp Contact Form */}
-        <div className="glass-panel" style={{ padding: '32px' }}>
-          <form onSubmit={handleOpenWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="glass-panel" style={{ padding: '28px' }}>
+          <form onSubmit={handleOpenWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Send a Direct Message</h3>
               <span style={{ fontSize: '0.8rem', color: '#25D366', fontWeight: 600 }}>● Instant WhatsApp Connect</span>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
                   Your Name
                 </label>
                 <input
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
                   style={{
@@ -314,7 +318,7 @@ export const Contact: React.FC = () => {
                 </label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="name@example.com"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
                   style={{
@@ -336,7 +340,7 @@ export const Contact: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="Project Collaboration / Inquiries"
+                placeholder="Project Collaboration / Internship Opportunity"
                 value={formData.subject}
                 onChange={e => setFormData({ ...formData, subject: e.target.value })}
                 style={{
@@ -358,7 +362,7 @@ export const Contact: React.FC = () => {
               <textarea
                 required
                 rows={4}
-                placeholder="Hello, I'd like to discuss a project..."
+                placeholder="Hello Teja, I would like to discuss..."
                 value={formData.message}
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
                 style={{
@@ -403,4 +407,5 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
+
 

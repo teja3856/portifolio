@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '32px',
             alignItems: 'flex-start',
           }}
@@ -58,25 +58,25 @@ export const Hero: React.FC = () => {
             {/* Title & Tagline */}
             <h1
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                fontSize: 'clamp(2.2rem, 4.8vw, 3.8rem)',
                 fontWeight: 800,
-                lineHeight: 1.1,
+                lineHeight: 1.15,
                 letterSpacing: '-0.03em',
               }}
             >
               Hi, I'm <span className="gradient-text">{PERSONAL_INFO.name}</span>
               <br />
-              <span style={{ fontSize: '0.8em', color: 'var(--text-secondary)', fontWeight: 600 }}>
+              <span style={{ fontSize: '0.7em', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 {PERSONAL_INFO.title}
               </span>
             </h1>
 
-            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '580px', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '580px', lineHeight: 1.6 }}>
               {PERSONAL_INFO.tagline}
             </p>
 
             {/* CTA Action Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '8px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '8px' }}>
               <a
                 href={PERSONAL_INFO.resumeUrl}
                 download="Teja_Santosh_Resume.pdf"
@@ -118,49 +118,50 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Interactive Stat Grid & Developer Badge Card */}
+          {/* Profile Card & Stats Grid */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Main Interactive Profile Card */}
-            <div className="glass-panel" style={{ padding: '32px', position: 'relative', overflow: 'hidden' }}>
+            <div className="glass-panel" style={{ padding: '28px', position: 'relative', overflow: 'hidden' }}>
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '16px',
-                  marginBottom: '24px',
+                  marginBottom: '20px',
                   borderBottom: '1px solid var(--border-subtle)',
-                  paddingBottom: '20px',
+                  paddingBottom: '16px',
                 }}
               >
                 <div
                   style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '20px',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '16px',
                     background: 'var(--accent-gradient)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#ffffff',
                     boxShadow: '0 8px 24px rgba(99, 102, 241, 0.4)',
+                    flexShrink: 0,
                   }}
                 >
-                  <Terminal size={32} />
+                  <Terminal size={28} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{PERSONAL_INFO.name}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{PERSONAL_INFO.location}</p>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{PERSONAL_INFO.name}</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{PERSONAL_INFO.location}</p>
                 </div>
               </div>
 
               {/* Bio summary in card */}
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginBottom: '20px', lineHeight: 1.6 }}>
                 {PERSONAL_INFO.bio}
               </p>
 
               {/* Quick Tech Pill Tags */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {['React', 'TypeScript', 'Next.js', 'Node.js', 'Python', 'AI/ML'].map(tech => (
+                {['Python', 'Machine Learning', 'SQL', 'React', 'TypeScript', 'Data Analysis'].map(tech => (
                   <span
                     key={tech}
                     style={{
@@ -193,7 +194,7 @@ export const Hero: React.FC = () => {
                   key={idx}
                   className="glass-panel"
                   style={{
-                    padding: '20px',
+                    padding: '18px 12px',
                     textAlign: 'center',
                     border: '1px solid var(--border-subtle)',
                   }}
@@ -201,14 +202,15 @@ export const Hero: React.FC = () => {
                   <div
                     className="gradient-text"
                     style={{
-                      fontSize: '2rem',
+                      fontSize: '1.4rem',
                       fontWeight: 800,
                       fontFamily: 'var(--font-heading)',
+                      lineHeight: 1.2,
                     }}
                   >
                     {stat.value}
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>
                     {stat.label}
                   </div>
                 </div>
@@ -220,3 +222,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+

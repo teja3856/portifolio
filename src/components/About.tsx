@@ -7,19 +7,19 @@ export const About: React.FC = () => {
 
   const pillars = [
     {
-      icon: <Layers size={24} color="#6366f1" />,
-      title: 'Scalable Architecture',
-      description: 'Building modular, maintainable, and type-safe frontends & microservices that scale effortlessly.'
+      icon: <Cpu size={24} color="#6366f1" />,
+      title: 'Machine Learning & Data',
+      description: 'Developing supervised learning models, data preprocessing pipelines, and exploratory data analysis using Python, Scikit-Learn, and SQL.'
     },
     {
-      icon: <Zap size={24} color="#8b5cf6" />,
-      title: 'Lightning Speed Performance',
-      description: 'Optimizing rendering pipelines, lazy loading, and bundle sizes to achieve 95+ Core Web Vitals.'
+      icon: <Layers size={24} color="#8b5cf6" />,
+      title: 'Full-Stack Development',
+      description: 'Building responsive, user-friendly web applications and interactive dashboards with React, TypeScript, and modern web technologies.'
     },
     {
-      icon: <Cpu size={24} color="#d946ef" />,
-      title: 'AI & Data Integration',
-      description: 'Empowering web apps with intelligent LLM features, agentic workflows, and real-time data pipelines.'
+      icon: <Zap size={24} color="#d946ef" />,
+      title: 'Problem Solving & Collaboration',
+      description: 'Tackling real-world challenges through national hackathons like Smart India Hackathon, active project coordination, and teamwork.'
     }
   ];
 
@@ -27,18 +27,18 @@ export const About: React.FC = () => {
     <section id="about" className="section-container">
       {/* Section Header */}
       <div className="section-header">
-        <span className="section-badge">About & Expertise</span>
-        <h2 className="section-title">Technical Mastery & Core Skills</h2>
+        <span className="section-badge">About & Focus</span>
+        <h2 className="section-title">Academic & Technical Foundation</h2>
         <p className="section-subtitle">
-          Combining modern frontend craftsmanship with reliable backend infrastructure to build world-class products.
+          B.Tech AI/ML student at GITAM University combining machine learning fundamentals, data analysis, and full-stack software development.
         </p>
       </div>
 
-      {/* Engineering Pillars */}
+      {/* Engineering & Learning Pillars */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: '24px',
           marginBottom: '60px',
         }}
@@ -48,7 +48,7 @@ export const About: React.FC = () => {
             key={idx}
             className="glass-panel"
             style={{
-              padding: '32px',
+              padding: '28px',
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
@@ -67,16 +67,18 @@ export const About: React.FC = () => {
             >
               {pillar.icon}
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{pillar.title}</h3>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>{pillar.description}</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{pillar.title}</h3>
+            <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              {pillar.description}
+            </p>
           </div>
         ))}
       </div>
 
       {/* Interactive Skills Matrix */}
-      <div id="skills" className="glass-panel" style={{ padding: '40px' }}>
+      <div id="skills" className="glass-panel" style={{ padding: '36px 28px' }}>
         <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '24px', textAlign: 'center' }}>
-          Interactive Tech Stack Matrix
+          Core Competencies & Skills
         </h3>
 
         {/* Category Tabs */}
@@ -86,7 +88,7 @@ export const About: React.FC = () => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             gap: '12px',
-            marginBottom: '40px',
+            marginBottom: '36px',
           }}
         >
           {SKILL_CATEGORIES.map((cat, idx) => (
@@ -95,8 +97,8 @@ export const About: React.FC = () => {
               onClick={() => setActiveCategoryIndex(idx)}
               className="btn"
               style={{
-                padding: '10px 20px',
-                fontSize: '0.9rem',
+                padding: '9px 20px',
+                fontSize: '0.875rem',
                 borderRadius: '9999px',
                 background: activeCategoryIndex === idx ? 'var(--accent-gradient)' : 'var(--bg-tertiary)',
                 color: activeCategoryIndex === idx ? '#ffffff' : 'var(--text-secondary)',
@@ -109,60 +111,94 @@ export const About: React.FC = () => {
           ))}
         </div>
 
-        {/* Skill Progress Bars Grid */}
+        {/* Skill Cards Grid (Percentages removed, focus & sub-areas displayed) */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '20px',
           }}
         >
           {SKILL_CATEGORIES[activeCategoryIndex].skills.map(skill => (
             <div
               key={skill.name}
               style={{
-                background: 'var(--bg-secondary)',
+                background: skill.isCore ? 'rgba(99, 102, 241, 0.03)' : 'var(--bg-secondary)',
                 padding: '20px',
                 borderRadius: '14px',
-                border: '1px solid var(--border-subtle)',
+                border: skill.isCore ? '1px solid rgba(99, 102, 241, 0.35)' : '1px solid var(--border-subtle)',
+                boxShadow: skill.isCore ? '0 4px 16px rgba(99, 102, 241, 0.08)' : 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '12px',
+                transition: 'transform 0.2s ease, border-color 0.2s ease',
               }}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: '10px',
-                }}
-              >
-                <span style={{ fontWeight: 600, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircle2 size={16} color="var(--accent-primary)" />
-                  {skill.name}
-                </span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--accent-primary)', fontWeight: 700 }}>
-                  {skill.level}%
-                </span>
-              </div>
-
-              {/* Progress Bar Container */}
-              <div
-                style={{
-                  height: '8px',
-                  width: '100%',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  borderRadius: '9999px',
-                  overflow: 'hidden',
-                }}
-              >
+              <div>
                 <div
                   style={{
-                    height: '100%',
-                    width: `${skill.level}%`,
-                    background: 'var(--accent-gradient)',
-                    borderRadius: '9999px',
-                    transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '8px',
+                    marginBottom: '6px',
                   }}
-                />
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckCircle2 size={18} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
+                    <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
+                      {skill.name}
+                    </span>
+                  </div>
+                  {skill.isCore && (
+                    <span
+                      style={{
+                        fontSize: '0.7rem',
+                        padding: '2px 8px',
+                        borderRadius: '9999px',
+                        background: 'rgba(99, 102, 241, 0.12)',
+                        color: 'var(--accent-primary)',
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      Core Focus
+                    </span>
+                  )}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: '0.85rem',
+                    color: 'var(--accent-primary)',
+                    fontWeight: 600,
+                    marginBottom: '10px',
+                    paddingLeft: '26px',
+                  }}
+                >
+                  {skill.focus}
+                </div>
+              </div>
+
+              {/* Skill Sub-topics / Area Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', paddingLeft: '26px' }}>
+                {skill.topics.map(topic => (
+                  <span
+                    key={topic}
+                    style={{
+                      padding: '3px 9px',
+                      borderRadius: '6px',
+                      background: 'var(--bg-tertiary)',
+                      fontSize: '0.75rem',
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--text-muted)',
+                      border: '1px solid var(--border-subtle)',
+                    }}
+                  >
+                    {topic}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
@@ -171,3 +207,4 @@ export const About: React.FC = () => {
     </section>
   );
 };
+

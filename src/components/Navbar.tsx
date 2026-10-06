@@ -22,15 +22,24 @@ export const Navbar: React.FC = () => {
       setIsScrolled(window.scrollY > 20);
 
       const sections = navLinks.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
+      if (window.scrollY < 80) {
+        setActiveSection('hero');
+        return;
+      }
+
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 80) {
+        setActiveSection(sections[sections.length - 1]);
+        return;
+      }
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i]);
         if (element) {
           const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+          if (scrollPosition >= top) {
+            setActiveSection(sections[i]);
             break;
           }
         }
@@ -38,6 +47,7 @@ export const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

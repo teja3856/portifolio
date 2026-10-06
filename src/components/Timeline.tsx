@@ -15,14 +15,14 @@ export const Timeline: React.FC = () => {
       {/* Section Header */}
       <div className="section-header">
         <span className="section-badge">Career & Growth</span>
-        <h2 className="section-title">Work Experience & Education</h2>
+        <h2 className="section-title">Experience & Education</h2>
         <p className="section-subtitle">
-          My professional journey across software engineering, tech leadership, and academic milestones.
+          My academic and professional journey across AI/ML internships, student leadership, and hackathons.
         </p>
       </div>
 
       {/* Filter Tabs */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '50px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginBottom: '40px' }}>
         <button
           onClick={() => setFilter('all')}
           className="btn"
@@ -49,7 +49,7 @@ export const Timeline: React.FC = () => {
             border: filter === 'work' ? 'none' : '1px solid var(--border-subtle)',
           }}
         >
-          Work Experience
+          Experience
         </button>
         <button
           onClick={() => setFilter('education')}
@@ -73,7 +73,7 @@ export const Timeline: React.FC = () => {
           maxWidth: '800px',
           margin: '0 auto',
           position: 'relative',
-          paddingLeft: '30px',
+          paddingLeft: '28px',
         }}
       >
         {/* Glowing Timeline Line */}
@@ -82,7 +82,7 @@ export const Timeline: React.FC = () => {
             position: 'absolute',
             top: '0',
             bottom: '0',
-            left: '11px',
+            left: '9px',
             width: '2px',
             background: 'linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary), transparent)',
           }}
@@ -93,21 +93,21 @@ export const Timeline: React.FC = () => {
             key={item.id}
             style={{
               position: 'relative',
-              marginBottom: '40px',
+              marginBottom: '32px',
             }}
           >
             {/* Glowing Dot Node */}
             <div
               style={{
                 position: 'absolute',
-                left: '-30px',
-                top: '4px',
-                width: '24px',
-                height: '24px',
+                left: '-28px',
+                top: '6px',
+                width: '20px',
+                height: '20px',
                 borderRadius: '50%',
-                background: 'var(--bg-primary)',
+                background: item.featured ? 'var(--accent-primary)' : 'var(--bg-primary)',
                 border: '3px solid var(--accent-primary)',
-                boxShadow: '0 0 12px var(--accent-glow)',
+                boxShadow: item.featured ? '0 0 14px var(--accent-primary)' : '0 0 8px var(--accent-glow)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -115,47 +115,75 @@ export const Timeline: React.FC = () => {
             />
 
             {/* Timeline Content Card */}
-            <div className="glass-panel" style={{ padding: '28px' }}>
+            <div
+              className="glass-panel"
+              style={{
+                padding: '24px',
+                border: item.featured ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid var(--border-subtle)',
+                background: item.featured ? 'rgba(99, 102, 241, 0.025)' : 'var(--bg-card)',
+                boxShadow: item.featured ? '0 4px 20px rgba(99, 102, 241, 0.1)' : 'var(--shadow-sm)',
+              }}
+            >
               <div
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: '12px',
-                  marginBottom: '12px',
+                  gap: '8px',
+                  marginBottom: '10px',
                 }}
               >
-                <span
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '4px 12px',
-                    borderRadius: '9999px',
-                    background: 'rgba(99, 102, 241, 0.1)',
-                    color: 'var(--accent-primary)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.8rem',
-                    fontWeight: 600,
-                  }}
-                >
-                  <Calendar size={14} />
-                  {item.period}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '4px 12px',
+                      borderRadius: '9999px',
+                      background: 'rgba(99, 102, 241, 0.1)',
+                      color: 'var(--accent-primary)',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                    }}
+                  >
+                    <Calendar size={13} />
+                    {item.period}
+                  </span>
 
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  <MapPin size={14} />
+                  {item.featured && (
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        padding: '3px 10px',
+                        borderRadius: '9999px',
+                        background: 'rgba(16, 185, 129, 0.1)',
+                        color: '#10b981',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                      }}
+                    >
+                      Featured Internship
+                    </span>
+                  )}
+                </div>
+
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.825rem', color: 'var(--text-muted)' }}>
+                  <MapPin size={13} />
                   {item.location}
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{item.role}</h3>
-              <h4 style={{ fontSize: '1rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '12px' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{item.role}</h3>
+              <h4 style={{ fontSize: '0.95rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '10px' }}>
                 {item.company}
               </h4>
 
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginBottom: '14px', lineHeight: 1.55 }}>
                 {item.description}
               </p>
 
@@ -163,8 +191,8 @@ export const Timeline: React.FC = () => {
               {item.achievements.length > 0 && (
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {item.achievements.map((ach, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                      <Award size={16} color="var(--accent-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                      <Award size={15} color="var(--accent-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
                       {ach}
                     </li>
                   ))}
@@ -177,3 +205,4 @@ export const Timeline: React.FC = () => {
     </section>
   );
 };
+

@@ -205,6 +205,16 @@ a {
   outline: none;
 }
 
+.btn:focus-visible,
+.btn-icon:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-primary) !important;
+  outline-offset: 2px !important;
+}
+
 .btn-primary {
   background: var(--accent-gradient);
   color: #ffffff;
@@ -313,9 +323,37 @@ a {
     padding: 60px 16px;
   }
 
+  .section-header {
+    margin-bottom: 36px;
+  }
+
   .btn {
-    padding: 12px 22px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-content {
+    max-height: 94vh;
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-subtitle {
     font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
   }
 }
 
@@ -327,3 +365,4 @@ a {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+

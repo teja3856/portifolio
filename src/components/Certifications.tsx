@@ -24,7 +24,7 @@ export const Certifications: React.FC = () => {
         </span>
         <h2 className="section-title">Certifications & Achievements</h2>
         <p className="section-subtitle">
-          Official credentials, hackathon honors, and industry AI/ML training certifications.
+          Official credentials, hackathon participation honors, and AI/ML training program certifications.
         </p>
       </div>
 
@@ -34,8 +34,8 @@ export const Certifications: React.FC = () => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '12px',
-          marginBottom: '50px',
+          gap: '10px',
+          marginBottom: '40px',
         }}
       >
         {categories.map(category => (
@@ -44,13 +44,13 @@ export const Certifications: React.FC = () => {
             onClick={() => setActiveCategory(category)}
             className="btn"
             style={{
-              padding: '10px 22px',
-              fontSize: '0.9rem',
+              padding: '8px 18px',
+              fontSize: '0.85rem',
               borderRadius: '9999px',
               background: activeCategory === category ? 'var(--accent-gradient)' : 'var(--bg-card)',
               color: activeCategory === category ? '#ffffff' : 'var(--text-secondary)',
               border: activeCategory === category ? 'none' : '1px solid var(--border-subtle)',
-              boxShadow: activeCategory === category ? '0 4px 20px rgba(79, 70, 229, 0.4)' : 'none',
+              boxShadow: activeCategory === category ? '0 4px 18px rgba(79, 70, 229, 0.4)' : 'none',
               transition: 'all 0.3s ease',
             }}
           >
@@ -63,8 +63,8 @@ export const Certifications: React.FC = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '32px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '28px',
         }}
       >
         {filteredCertificates.map(cert => (
@@ -74,7 +74,7 @@ export const Certifications: React.FC = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: '20px',
+              borderRadius: '18px',
               overflow: 'hidden',
               border: '1px solid var(--border-subtle)',
               position: 'relative',
@@ -86,7 +86,7 @@ export const Certifications: React.FC = () => {
               style={{
                 position: 'relative',
                 width: '100%',
-                height: '220px',
+                height: '200px',
                 background: 'var(--bg-tertiary)',
                 overflow: 'hidden',
                 cursor: 'pointer',
@@ -96,6 +96,8 @@ export const Certifications: React.FC = () => {
               <img
                 src={cert.image}
                 alt={cert.title}
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -117,15 +119,15 @@ export const Certifications: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '10px',
+                  gap: '8px',
                   transition: 'opacity 0.3s ease',
                   color: '#ffffff',
                   fontWeight: 600,
-                  fontSize: '0.95rem',
+                  fontSize: '0.9rem',
                 }}
                 className="cert-overlay"
               >
-                <Maximize2 size={20} />
+                <Maximize2 size={18} />
                 Click to Inspect Certificate
               </div>
 
@@ -133,55 +135,55 @@ export const Certifications: React.FC = () => {
               <span
                 style={{
                   position: 'absolute',
-                  top: '14px',
-                  right: '14px',
-                  background: 'rgba(15, 23, 42, 0.75)',
+                  top: '12px',
+                  right: '12px',
+                  background: 'rgba(15, 23, 42, 0.8)',
                   backdropFilter: 'blur(8px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   color: '#ffffff',
-                  fontSize: '0.75rem',
+                  fontSize: '0.725rem',
                   fontWeight: 700,
-                  padding: '5px 12px',
+                  padding: '4px 10px',
                   borderRadius: '9999px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
+                  gap: '5px',
                   zIndex: 2,
                 }}
               >
-                <ShieldCheck size={14} color="#10b981" />
+                <ShieldCheck size={13} color="#10b981" />
                 {cert.badge}
               </span>
             </div>
 
             {/* Content Details */}
-            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1, gap: '14px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--accent-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ padding: '22px', display: 'flex', flexDirection: 'column', flex: 1, gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--accent-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {cert.category}
                 </span>
 
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Calendar size={13} />
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Calendar size={12} />
                   {cert.issueDate}
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, lineHeight: 1.3 }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, lineHeight: 1.35 }}>
                 {cert.title}
               </h3>
 
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
                 <strong>Issuer:</strong> {cert.issuer}
               </p>
 
               {cert.credentialId && (
-                <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', background: 'rgba(99, 102, 241, 0.08)', padding: '4px 10px', borderRadius: '6px', width: 'fit-content' }}>
+                <div style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', background: 'rgba(99, 102, 241, 0.08)', padding: '3px 8px', borderRadius: '6px', width: 'fit-content' }}>
                   ID: {cert.credentialId}
                 </div>
               )}
 
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5, flex: 1 }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.5, flex: 1 }}>
                 {cert.description}
               </p>
 
@@ -191,8 +193,8 @@ export const Certifications: React.FC = () => {
                   <span
                     key={skill}
                     style={{
-                      fontSize: '0.75rem',
-                      padding: '3px 10px',
+                      fontSize: '0.725rem',
+                      padding: '3px 9px',
                       borderRadius: '9999px',
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border-subtle)',
@@ -206,13 +208,14 @@ export const Certifications: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div style={{ display: 'flex', gap: '12px', marginTop: '12px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
+              <div style={{ display: 'flex', gap: '10px', marginTop: '8px', paddingTop: '14px', borderTop: '1px solid var(--border-subtle)' }}>
                 <button
                   onClick={() => setSelectedCertificate(cert)}
                   className="btn btn-secondary"
-                  style={{ flex: 1, padding: '10px 14px', fontSize: '0.85rem', gap: '6px' }}
+                  aria-label={`Inspect ${cert.title}`}
+                  style={{ flex: 1, padding: '8px 12px', fontSize: '0.825rem', gap: '6px' }}
                 >
-                  <Maximize2 size={16} /> Inspect
+                  <Maximize2 size={15} /> Inspect
                 </button>
 
                 <a
@@ -221,9 +224,10 @@ export const Certifications: React.FC = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-primary"
-                  style={{ flex: 1, padding: '10px 14px', fontSize: '0.85rem', gap: '6px' }}
+                  aria-label={`Download certificate document for ${cert.title}`}
+                  style={{ flex: 1, padding: '8px 12px', fontSize: '0.825rem', gap: '6px' }}
                 >
-                  <Download size={16} /> Download
+                  <Download size={15} /> Download
                 </a>
               </div>
             </div>
@@ -238,35 +242,35 @@ export const Certifications: React.FC = () => {
             className="modal-content"
             onClick={e => e.stopPropagation()}
             style={{
-              maxWidth: '900px',
-              padding: '32px',
+              maxWidth: '850px',
+              padding: '24px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '20px',
+              gap: '16px',
             }}
           >
             {/* Modal Header */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '14px' }}>
               <div>
                 <span
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '4px 12px',
+                    padding: '3px 10px',
                     borderRadius: '9999px',
                     background: 'rgba(16, 185, 129, 0.1)',
                     color: '#10b981',
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     fontWeight: 700,
-                    marginBottom: '8px',
+                    marginBottom: '6px',
                   }}
                 >
-                  <ShieldCheck size={14} />
+                  <ShieldCheck size={13} />
                   {selectedCertificate.badge}
                 </span>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>{selectedCertificate.title}</h3>
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800 }}>{selectedCertificate.title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                   {selectedCertificate.issuer} &nbsp;•&nbsp; {selectedCertificate.issueDate}
                 </p>
               </div>
@@ -274,10 +278,10 @@ export const Certifications: React.FC = () => {
               <button
                 onClick={() => setSelectedCertificate(null)}
                 className="btn-icon"
-                style={{ width: '40px', height: '40px', flexShrink: 0 }}
+                style={{ width: '36px', height: '36px', flexShrink: 0 }}
                 aria-label="Close modal"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
             </div>
 
@@ -285,8 +289,8 @@ export const Certifications: React.FC = () => {
             <div
               style={{
                 width: '100%',
-                maxHeight: '520px',
-                borderRadius: '16px',
+                maxHeight: '480px',
+                borderRadius: '14px',
                 overflow: 'hidden',
                 background: '#000000',
                 display: 'flex',
@@ -301,15 +305,15 @@ export const Certifications: React.FC = () => {
                 alt={selectedCertificate.title}
                 style={{
                   maxWidth: '100%',
-                  maxHeight: '520px',
+                  maxHeight: '480px',
                   objectFit: 'contain',
                 }}
               />
             </div>
 
             {/* Modal Footer & Actions */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', maxWidth: '600px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '14px', paddingTop: '10px', borderTop: '1px solid var(--border-subtle)' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', maxWidth: '560px', lineHeight: 1.5 }}>
                 {selectedCertificate.description}
               </p>
 
@@ -319,9 +323,9 @@ export const Certifications: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary"
-                style={{ padding: '10px 24px', fontSize: '0.9rem' }}
+                style={{ padding: '9px 20px', fontSize: '0.875rem' }}
               >
-                <Download size={18} /> Download Document
+                <Download size={16} /> Download Document
               </a>
             </div>
           </div>
@@ -340,3 +344,4 @@ export const Certifications: React.FC = () => {
     </section>
   );
 };
+
