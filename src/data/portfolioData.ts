@@ -29,6 +29,17 @@ export interface SkillCategory {
   skills: SkillItem[];
 }
 
+export interface LanguageItem {
+  language: string;
+  proficiency: string;
+}
+
+export interface HonorItem {
+  title: string;
+  organization: string;
+  year?: string;
+}
+
 export interface TimelineItem {
   id: string;
   period: string;
@@ -44,125 +55,165 @@ export interface TimelineItem {
 export const PERSONAL_INFO = {
   name: 'Teja Santosh',
   displayName: 'Teja',
-  title: 'AI/ML Student | Software Developer | Project Coordinator',
-  tagline: 'B.Tech CSE (AI & ML) student at GITAM University with practical experience in Python, SQL, Machine Learning, and software development.',
-  location: 'Rajanagaram, Andhra Pradesh, India',
+  title: 'Computer Science Engineering (AIML) Student',
+  tagline: 'Results-oriented CSE (AIML) student at GITAM University with hands-on experience in Python, SQL, Machine Learning, React and TypeScript.',
+  location: 'Rajanagaram, Andhra Pradesh 533294, India',
   email: 'tejasantosh88@gmail.com',
   phone: '+91 9392360033',
   github: 'https://github.com/teja3856',
   linkedin: 'https://www.linkedin.com/in/teja-santosh-668695311',
   twitter: 'https://twitter.com',
+  portfolio: 'https://tejasantosh88-dev.web.app',
   resumeUrl: '/Teja_Santosh_Resume.pdf',
-  bio: 'I am Teja Santosh, pursuing B.Tech in Computer Science Engineering with specialization in AI & ML at GITAM University, Bangalore. Skilled in Python, SQL, Machine Learning algorithms, and full-stack software development, with active leadership in student project coordination and hackathons.',
+  bio: 'Results-oriented Computer Science Engineering (AIML) student with hands-on experience in Python, SQL, Machine Learning, React and TypeScript. Built AI/ML and full-stack projects and gained industry exposure through an AI/ML internship. Strong in problem-solving, analytical thinking, teamwork and communication.',
   availability: 'Available for AI/ML roles, internships & project collaborations',
   stats: [
     { label: 'Degree', value: 'B.Tech CSE (AIML)' },
     { label: 'University', value: 'GITAM Bangalore' },
-    { label: 'Core Skills', value: 'Python, SQL & ML' },
-    { label: 'Hackathons', value: 'Smart India' }
+    { label: 'Core Skills', value: 'Python, ML & React' },
+    { label: 'Hackathons', value: 'Smart India Hackathon' }
   ]
 };
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    category: 'AI & Technical Skills',
+    category: 'Technical Skills',
     skills: [
       {
         name: 'Python',
-        tags: ['Data Analysis', 'NumPy', 'Pandas', 'Machine Learning', 'Automation']
-      },
-      {
-        name: 'SQL & Databases',
-        tags: ['SQL Queries', 'Joins', 'Data Filtering', 'Relational Databases']
+        tags: ['Pandas', 'NumPy', 'Data Analysis', 'Scikit-learn', 'Automation']
       },
       {
         name: 'Machine Learning',
-        tags: ['Supervised Learning', 'Classification', 'Regression', 'Model Evaluation', 'Scikit-Learn']
+        tags: ['Scikit-learn', 'Pandas', 'XGBoost', 'Supervised Learning', 'Model Evaluation']
       },
       {
-        name: 'Problem Solving & Logic',
-        tags: ['Data Structures', 'Algorithms', 'Debugging', 'Logical Thinking']
+        name: 'Web & Frontend Development',
+        tags: ['React', 'TypeScript', 'Responsive UI', 'Interactive Web', 'Component Architecture']
       },
       {
-        name: 'Analytical Thinking',
-        tags: ['Data Interpretation', 'Pattern Recognition', 'Problem Analysis', 'Insights']
+        name: 'Databases & Cloud',
+        tags: ['SQL', 'Relational Databases', 'Firebase', 'Data Filtering']
+      },
+      {
+        name: 'Tools & Version Control',
+        tags: ['Git/GitHub', 'Microsoft Office', 'VS Code', 'CI/CD Basics']
       }
     ]
   },
   {
-    category: 'Professional & Management',
-    skills: [
-      {
-        name: 'Project Coordination',
-        tags: ['Planning', 'Execution', 'Team Alignment', 'Task Prioritization', 'Milestone Tracking']
-      },
-      {
-        name: 'Community Outreach',
-        tags: ['Student Engagement', 'Event Organizing', 'Public Outreach', 'Campaigns']
-      },
-      {
-        name: 'Technical Writing',
-        tags: ['Documentation', 'Project Reports', 'Content Strategy', 'Technical Communication']
-      },
-      {
-        name: 'Volunteer Engagement',
-        tags: ['Team Support', 'Activity Coordination', 'Peer Mentorship', 'Workshops']
-      },
-      {
-        name: 'Adaptability & Learning',
-        tags: ['Rapid Prototyping', 'Continuous Growth', 'Tool Adoption', 'Fast Learning']
-      }
-    ]
-  },
-  {
-    category: 'Soft Skills & Collaboration',
+    category: 'Professional Skills',
     skills: [
       {
         name: 'Team Collaboration',
         tags: ['Cross-Functional Teamwork', 'Hackathon Teams', 'Peer Programming', 'Active Feedback']
       },
       {
-        name: 'Communication Skills',
-        tags: ['Articulating Ideas', 'Technical Discussions', 'Presentations', 'Active Listening']
+        name: 'Problem Solving',
+        tags: ['Analytical Thinking', 'Algorithms', 'Debugging', 'Logical Reasoning']
       },
       {
-        name: 'Stakeholder Engagement',
-        tags: ['Campus Initiatives', 'Student Relations', 'Community Building', 'Coordination']
+        name: 'Project Coordination',
+        tags: ['Planning', 'Execution', 'Task Prioritization', 'Milestone Tracking']
       },
       {
-        name: 'Leadership & Initiative',
-        tags: ['Club Activities', 'Event Management', 'GUSAC Content Lead', 'Team Motivation']
+        name: 'Volunteer Engagement',
+        tags: ['Community Outreach', 'Student Engagement', 'Peer Mentorship', 'Event Organizing']
+      },
+      {
+        name: 'Adaptability & Learning',
+        tags: ['Continuous Growth', 'Tool Adoption', 'Rapid Prototyping', 'Fast Learning']
+      },
+      {
+        name: 'Communication',
+        tags: ['Articulating Ideas', 'Technical Discussions', 'Presentations', 'Content Strategy']
+      }
+    ]
+  },
+  {
+    category: 'Languages',
+    skills: [
+      {
+        name: 'English',
+        tags: ['Upper Intermediate', 'Professional Working Proficiency']
+      },
+      {
+        name: 'Hindi',
+        tags: ['Upper Intermediate', 'Professional Working Proficiency']
+      },
+      {
+        name: 'Telugu',
+        tags: ['Native / Bilingual Proficiency']
       }
     ]
   }
 ];
 
+export const LANGUAGES: LanguageItem[] = [
+  { language: 'English', proficiency: 'Upper Intermediate' },
+  { language: 'Hindi', proficiency: 'Upper Intermediate' },
+  { language: 'Telugu', proficiency: 'Native' }
+];
+
+export const HONORS: HonorItem[] = [
+  { title: 'Smart India Hackathon 2025', organization: 'GITAM University, Bangalore', year: '2025' },
+  { title: 'Hackathon 2026', organization: 'GITAM University, Bangalore', year: '2026' },
+  { title: 'Certificate of Completion', organization: 'Aenexz Tech Private Limited', year: '2026' }
+];
+
 export const PROJECTS: Project[] = [
+  {
+    id: 'railway-ai-block-planning',
+    title: 'AI Automatic Block Planning – Indian Railways',
+    category: 'AI / Machine Learning',
+    description: 'Smart India Hackathon project delivering a control-room dashboard prototype for automated train block scheduling and traffic optimization.',
+    longDescription: 'Developed for the Smart India Hackathon (SIH26027), this project delivers a control-room dashboard prototype for automated train block scheduling and traffic optimization, helping railway section controllers plan maintenance blocks with minimized disruption.',
+    problem: 'Manual train block planning in railway control rooms is time-consuming and prone to scheduling conflicts during maintenance windows.',
+    solution: 'A control-room dashboard prototype automating train block scheduling and traffic optimization with real-time conflict identification.',
+    technologies: ['AI/ML', 'React', 'TypeScript', 'Firebase', 'Automation'],
+    contribution: [
+      'Designed control-room dashboard prototype for automated train block scheduling',
+      'Implemented conflict detection algorithms for train paths and maintenance windows',
+      'Integrated Firebase backend and real-time status monitoring for railway section control'
+    ],
+    tags: ['AI/ML', 'React', 'TypeScript', 'Firebase', 'Automation'],
+    image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=80',
+    liveUrl: 'https://ai-resume-68ff7.web.app/',
+    githubUrl: 'https://github.com/teja3856/sih26027-railway-planner',
+    featured: true,
+    metrics: 'Smart India Hackathon Project',
+    highlights: [
+      'Problem: Manual train block planning and maintenance scheduling causing potential line congestion',
+      'Solution: Control-room dashboard prototype automating block scheduling and traffic optimization',
+      'Technologies: AI/ML, React, TypeScript, Firebase, Automation',
+      'Contribution: Control-room UI design, scheduling logic, and hackathon presentation'
+    ]
+  },
   {
     id: 'customer-churn-prediction',
     title: 'Customer Churn & Revenue Forecasting',
     category: 'AI / Machine Learning',
-    description: 'Supervised machine learning pipeline built with Python, Scikit-Learn, and XGBoost to predict customer churn risk and analyze factors driving revenue loss.',
-    longDescription: 'Developed an end-to-end machine learning project to identify customer churn patterns and forecast revenue impact. The pipeline preprocesses customer behavioral data, trains multiple supervised classification models, evaluates precision and recall metrics, and extracts feature importances to highlight key churn indicators.',
+    description: 'Supervised machine-learning pipeline built to predict customer churn risk and analyze factors driving revenue loss.',
+    longDescription: 'Developed an end-to-end supervised machine learning pipeline to predict customer churn risk and analyze factors driving revenue loss. The system cleans behavioral customer datasets, evaluates multiple classification models, and provides actionable feature importance analysis.',
     problem: 'Businesses face customer attrition without clear visibility into behavioral risk factors and potential recurring revenue loss.',
-    solution: 'Built an automated supervised classification pipeline comparing models (Logistic Regression, Random Forest, XGBoost) to classify churn risk and highlight top indicators.',
-    technologies: ['Python', 'Scikit-Learn', 'Pandas', 'XGBoost', 'Supervised Learning', 'Matplotlib'],
+    solution: 'Built a supervised machine-learning pipeline with Scikit-learn and XGBoost to predict customer churn risk and uncover top revenue-loss indicators.',
+    technologies: ['Python', 'Scikit-learn', 'Pandas', 'XGBoost', 'Supervised Learning'],
     contribution: [
       'Engineered data preprocessing and feature encoding pipeline using Pandas',
       'Trained and compared classification algorithms with cross-validation',
       'Evaluated precision, recall, and ROC-AUC metrics to optimize churn detection',
-      'Extracted feature importances to identify actionable churn drivers'
+      'Extracted feature importances to identify key factors driving revenue loss'
     ],
-    tags: ['Python', 'Scikit-Learn', 'Pandas', 'XGBoost', 'Supervised Learning'],
+    tags: ['Python', 'Scikit-learn', 'Pandas', 'XGBoost', 'Supervised Learning'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
     liveUrl: 'https://github.com/teja3856/intership',
     githubUrl: 'https://github.com/teja3856/intership',
     featured: true,
     metrics: 'Supervised ML Pipeline',
     highlights: [
-      'Problem: Identifying customer attrition risk and understanding factors behind revenue decline',
-      'Solution: Supervised classification pipeline utilizing Python, Scikit-Learn, and XGBoost',
-      'Technologies: Python, Scikit-Learn, Pandas, XGBoost, Matplotlib, Seaborn',
+      'Problem: Predicting customer churn risk and diagnosing factors driving revenue loss',
+      'Solution: Supervised machine-learning pipeline utilizing Python, Scikit-learn, Pandas, and XGBoost',
+      'Technologies: Python, Scikit-learn, Pandas, XGBoost, Supervised Learning',
       'Contribution: End-to-end data cleaning, model training, evaluation, and feature importance analysis'
     ]
   },
@@ -170,43 +221,43 @@ export const PROJECTS: Project[] = [
     id: 'resumecraft-ai',
     title: 'ResumeCraft AI – Smart Resume Generator',
     category: 'AI / Machine Learning',
-    description: 'An AI-powered web application that helps students and professionals generate structured, ATS-friendly resumes with intelligent content suggestions.',
-    longDescription: 'Developed ResumeCraft AI to address common resume structuring and ATS-compatibility hurdles. Built with React and TypeScript on the frontend and integrated with generative AI APIs, the application offers structured inputs, real-time live preview, and export-ready formatting.',
+    description: 'AI-powered web application helping students and professionals generate structured, ATS-friendly resumes with intelligent content suggestions.',
+    longDescription: 'Developed ResumeCraft AI to help students and professionals create structured, ATS-friendly resumes with intelligent content suggestions. Built with React and TypeScript on the frontend and integrated with Generative AI and Python backend services, hosted on Firebase.',
     problem: 'Job seekers often face difficulty structuring bullet points and formatting resumes cleanly for ATS screening.',
-    solution: 'An interactive web tool providing guided inputs, AI-assisted content optimization, and instant structured preview.',
-    technologies: ['React', 'TypeScript', 'Generative AI APIs', 'Python', 'Firebase Hosting'],
+    solution: 'An AI-powered web application helping users generate structured, ATS-friendly resumes with intelligent content suggestions.',
+    technologies: ['React', 'TypeScript', 'Generative AI', 'Python', 'Firebase'],
     contribution: [
       'Built modular React components for resume sections, skills, and experience',
-      'Integrated AI generation workflows to produce structured role descriptions',
-      'Implemented real-time live preview and structured layout formatting',
-      'Configured Firebase deployment for accessible web hosting'
+      'Integrated Generative AI workflows to produce structured role descriptions and suggestions',
+      'Implemented real-time live preview and structured ATS-friendly layout formatting',
+      'Configured Firebase deployment for reliable web hosting'
     ],
     tags: ['React', 'TypeScript', 'Generative AI', 'Python', 'Firebase'],
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1000&q=80',
     liveUrl: 'https://resumecraft-ai-789.web.app/',
-    githubUrl: 'https://github.com/teja3856',
+    githubUrl: 'https://github.com/teja3856/resumebuilder',
     featured: true,
     metrics: 'Live AI Web Application',
     highlights: [
       'Problem: Inconsistent resume formatting and difficulty tailoring experience for ATS systems',
-      'Solution: Interactive web application offering AI-guided content suggestions and structured formatting',
-      'Technologies: React, TypeScript, Generative AI APIs, Python, Firebase',
-      'Contribution: Dynamic UI development, AI API integration, real-time preview, and cloud deployment'
+      'Solution: AI-powered web application for structured, ATS-friendly resumes with intelligent suggestions',
+      'Technologies: React, TypeScript, Generative AI, Python, Firebase',
+      'Contribution: UI development, Generative AI integration, live preview, and Firebase deployment'
     ]
   },
   {
     id: 'punjabi-shiksha-setu',
     title: 'Punjabi Shiksha Setu – Educational Portal',
     category: 'Full-Stack Web App',
-    description: 'An interactive language learning web portal featuring structured lesson modules, student progress tracking, and interactive quizzes.',
-    longDescription: 'Created an accessible digital learning environment for Punjabi language students. The platform organizes learning material into progressive modules, accompanied by interactive practice quizzes and student dashboard analytics.',
+    description: 'Interactive language-learning web portal featuring structured lesson modules, student progress tracking and interactive quizzes.',
+    longDescription: 'Created an accessible digital learning environment for Punjabi language learners. The platform features structured lesson modules, student progress tracking, and interactive quizzes for self-paced study.',
     problem: 'Need for structured digital learning resources and self-paced assessment tools for language learners.',
-    solution: 'A responsive educational web application with categorized study modules, interactive quizzes, and visual progress tracking.',
-    technologies: ['React', 'TypeScript', 'Responsive CSS', 'Interactive UI Components'],
+    solution: 'An interactive language-learning web portal with structured lesson modules, student progress tracking, and interactive quizzes.',
+    technologies: ['React', 'TypeScript', 'EdTech', 'Responsive UI', 'Interactive Web'],
     contribution: [
       'Designed student dashboard interface with modular lesson navigation',
       'Created interactive quiz components with instant scoring feedback',
-      'Implemented responsive design for accessible learning on mobile and desktop devices'
+      'Implemented responsive UI design for accessible learning on mobile and desktop devices'
     ],
     tags: ['React', 'TypeScript', 'EdTech', 'Responsive UI', 'Interactive Web'],
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1000&q=80',
@@ -216,36 +267,9 @@ export const PROJECTS: Project[] = [
     metrics: 'Interactive Learning Platform',
     highlights: [
       'Problem: Limited interactive digital tools for structured language study and self-assessment',
-      'Solution: Clean educational portal with module navigation, practice tests, and progress tracking',
-      'Technologies: React, TypeScript, CSS, Interactive State Management',
+      'Solution: Interactive educational portal with structured lesson modules, quizzes, and progress tracking',
+      'Technologies: React, TypeScript, EdTech, Responsive UI, Interactive Web',
       'Contribution: Dashboard UI architecture, quiz interaction logic, and cross-device responsiveness'
-    ]
-  },
-  {
-    id: 'railway-ai-block-planning',
-    title: 'AI Automatic Block Planning – Indian Railways',
-    category: 'AI / Machine Learning',
-    description: 'Smart India Hackathon project delivering a control room dashboard prototype for automated train block scheduling and traffic optimization.',
-    longDescription: 'Developed for the Smart India Hackathon (SIH26027), this project provides a prototype AI-assisted control room interface to help railway section controllers plan maintenance blocks and manage train schedules with reduced conflict risk.',
-    problem: 'Manual section block planning in railway control rooms is time-consuming and prone to scheduling conflicts during maintenance windows.',
-    solution: 'A prototype control room dashboard that automates block allocation and highlights train section conflicts.',
-    technologies: ['React', 'TypeScript', 'AI Scheduling Algorithms', 'Smart India Hackathon', 'Firebase'],
-    contribution: [
-      'Designed control room dashboard views for section occupancy and maintenance blocks',
-      'Implemented scheduling conflict detection logic for train paths',
-      'Collaborated on problem analysis, system workflow design, and hackathon presentation'
-    ],
-    tags: ['AI / Machine Learning', 'React', 'TypeScript', 'Smart India Hackathon', 'Firebase', 'Automation'],
-    image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1000&q=80',
-    liveUrl: 'https://ai-resume-68ff7.web.app/',
-    githubUrl: 'https://github.com/teja3856/sih26027-railway-planner',
-    featured: true,
-    metrics: 'Smart India Hackathon (SIH26027)',
-    highlights: [
-      'Problem: Manual train block planning and maintenance scheduling causing potential line congestion',
-      'Solution: Control room dashboard prototype automating block allocation and conflict visualization',
-      'Technologies: React, TypeScript, Scheduling Algorithms, Firebase',
-      'Contribution: UI dashboard layout, conflict detection workflows, and hackathon prototype presentation'
     ]
   }
 ];
@@ -323,64 +347,63 @@ export const TIMELINE: TimelineItem[] = [
     role: 'AI/ML Intern',
     company: 'Aenexz Tech Private Limited',
     location: 'India',
-    description: 'Completed a 3-month AI/ML internship focused on practical machine learning pipelines, data preprocessing, and model evaluation.',
+    description: 'Completed a 3-month AI/ML internship focused on building and contributing to AI/ML models for real-world projects.',
     achievements: [
-      'Built and tested supervised learning models for data classification and prediction workflows',
-      'Performed exploratory data analysis (EDA), data cleaning, and feature engineering using Python and Pandas',
-      'Evaluated model classification metrics and documented implementation findings'
+      'Built and contributed to AI/ML models for real-world projects.',
+      'Worked on model development, implementation and performance improvement.',
+      'Completed the AI/ML program and received a Certificate of Completion.'
     ],
     type: 'work',
     featured: true
   },
   {
     id: 'exp-2',
-    period: '2026 – Present',
+    period: 'Ongoing',
     role: 'Content Lead',
-    company: 'GUSAC Club, GITAM University',
+    company: 'GUSAC Club, GITAM University – Bangalore',
     location: 'Bangalore, Karnataka',
-    description: 'Leading technical writing, digital communication, and event storytelling for the GITAM University Science and Activity Center (GUSAC).',
+    description: 'Planned and created content for club activities, events and initiatives.',
     achievements: [
-      'Coordinating content strategy, technical documentation, and announcements for club events and technical activities',
-      'Collaborating with student teams to promote club initiatives, workshops, and student participation'
+      'Planned and created content for club activities, events and initiatives.',
+      'Supported student engagement and communication through content and promotional activities.'
     ],
     type: 'work'
   },
   {
     id: 'edu-1',
-    period: '2024 – Expected 2028',
-    role: 'B.Tech in Computer Science Engineering (AI & ML)',
-    company: 'GITAM University',
+    period: 'Expected Apr 2028',
+    role: 'B.Tech in Computer Science Engineering (AIML): Software Engineering',
+    company: 'GITAM University, Bangalore, Karnataka',
     location: 'Bangalore, Karnataka',
-    description: 'Pursuing B.Tech in CSE with specialization in Artificial Intelligence & Machine Learning. Active participant in Smart India Hackathon.',
+    description: 'Pursuing B.Tech in CSE with specialization in AI & ML and Software Engineering.',
     achievements: [
-      'Smart India Hackathon participant at GITAM University Bangalore',
-      'Focusing on Python, SQL, Machine Learning foundations, and Software Engineering'
+      'Hands-on experience in Python, SQL, Machine Learning, React and TypeScript',
+      'Smart India Hackathon 2025 & Hackathon 2026 participant'
     ],
     type: 'education'
   },
   {
     id: 'edu-2',
-    period: '2022 – 2024',
-    role: 'Pre-Graduation (Intermediate / Class XII)',
-    company: 'Shri Shiridi Sai Junior College',
+    period: 'Apr 2024',
+    role: 'Pre Graduation',
+    company: 'Shri Shiridi Sai Junior College, Rajanagaram, Andhra Pradesh',
     location: 'Rajanagaram, Andhra Pradesh',
-    description: 'Completed higher secondary education with a focus on Mathematics, Physics, and Chemistry.',
+    description: 'Completed higher secondary education with strong focus on mathematics and science.',
     achievements: [
-      'Strong academic foundation in analytical thinking, mathematics, and science'
+      'Strong academic foundation in analytical problem solving and mathematics'
     ],
     type: 'education'
   },
   {
     id: 'edu-3',
-    period: 'Completed May 2022',
-    role: 'High School (Class X)',
-    company: 'Oakwood School',
+    period: 'May 2022',
+    role: 'High School',
+    company: 'Oakwood School, Diwancheruvu, Andhra Pradesh',
     location: 'Diwancheruvu, Andhra Pradesh',
-    description: 'Completed secondary school education with active participation in academics.',
+    description: 'Completed secondary school education.',
     achievements: [
       'Active participation in school academic coursework and activities'
     ],
     type: 'education'
   }
 ];
-
